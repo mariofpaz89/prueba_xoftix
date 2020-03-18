@@ -1,0 +1,6 @@
+CREATE VIEW Tiempo_Conductor AS
+	SELECT 
+		c.codigoC, AVG(tiempo) as tiempo_prom
+	FROM
+		Conductores c JOIN Trabajos t ON  t.codigoC = c.codigoC
+	GROUP BY c.codigoC;

@@ -1,0 +1,14 @@
+SELECT 
+	c.municipio, Count(tx.codigoP) as Proy_x_Cond
+FROM (
+	SELECT 
+		c.codigoC, t.codigoP
+	FROM 
+		Conductores c JOIN Trabajos t ON c.codigoC = t.codigoC 
+	GROUP BY
+		c.codigoC, t.codigoP
+) tx JOIN Conductores c ON c.codigoC = tx.codigoC
+GROUP BY 
+	tx.codigoC, municipio
+HAVING 
+	COUNT(tx.codigoP) > 2

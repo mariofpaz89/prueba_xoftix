@@ -1,0 +1,6 @@
+SELECT
+	c.nombre, c.municipio
+FROM 
+	Conductores c JOIN Trabajos t ON c.codigoC = t.codigoC JOIN Proyectos p ON p.codigoP = t.codigoP
+WHERE 
+	p.cliente NOT LIKE 'Henry Pulido'

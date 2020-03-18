@@ -1,0 +1,10 @@
+SELECT
+	p.descripcion, p.cliente, SUM(t.tiempo * m.precio_hora) as total_factura
+FROM 
+	Proyectos p LEFT JOIN Trabajos t ON p.codigoP = t.codigoP LEFT JOIN Maquinas m ON m.codigoM = t.codigoM 
+GROUP BY 
+	p.descripcion, p.cliente
+ORDER BY 
+	p.cliente, total_factura
+
+	
